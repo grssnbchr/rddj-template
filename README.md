@@ -6,10 +6,13 @@
 
 * Comes with cutting-edge, tried-and-tested packages for efficient data journalism with R, such as the `tidyverse`
 * *Full* **reproducibility** with package snapshots (thanks to the `checkpoint` package)
+* Runs out of the box and in one go, user doesn't have to have anything pre-installed (except R and maybe RStudio)
 * Automatic deployment of knitted RMarkdown files (and zipped source code) to **GitHub pages**, see [this example](https://grssnbchr.github.io/rddj-template)
 * Code **linting** according to the `tidyverse` style guide
 * Preconfigured `.gitignore` which ignores shadow files, access tokens and the like per default
 * Automatic working directory configuration for multiple users
+
+*For more information please see the [accompanying blog post](https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/)*
 
 ## Setup
 
