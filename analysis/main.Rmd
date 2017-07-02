@@ -184,6 +184,19 @@ write.csv2(x, "output/xyz.csv", row.names = F)
 # write.csv2(x, "output/ignore/fgh.csv", row.names = F)
 ```
 
+## Some plot
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+set.seed(123)
+x <- rnorm(100)
+y <- x * 2 + rnorm(100)
+df <- data.frame(x, y)
+ggplot(df) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y)) + 
+  labs(title = "The correlation between x and y", subtitle = "A ggplot2 approach", caption = "source: a pseudo-number generator with seed 123") +
+  theme_minimal()
+``` 
 
 ## Linting
 

@@ -12,7 +12,7 @@
 * Preconfigured `.gitignore` which ignores shadow files, access tokens and the like per default
 * Automatic working directory configuration for multiple users
 
-*For more information please see the [accompanying blog post](https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/)*
+*For more information please see the [accompanying blog post](https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/)*.
 
 ## Setup
 
