@@ -56,6 +56,18 @@ This has two big advantages:
 
 In order to make `checkpoint` work with `knitr`, [this vignette](https://github.com/RevolutionAnalytics/checkpoint/blob/master/vignettes/archive/using-checkpoint-with-knitr.Rmd) was adapted (it is now archived).
 
+### The downside(s) of `checkpoint`
+
+With `checkpoint`, you can only access archived packages from CRAN, i.e. MRAN. As others [have pointed out](https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/#comment-48928), GitHub repositories don't fit into this system. I wouldn't consider this as a big issue as you can install specific versions (i.e. releases/tags) from GitHub and as long as the GitHub repository stays alive, you can access these old versions. This is how the `checkpoint` package itself is installed in this template, by the way: 
+
+```
+devtools::install_github("checkpoint",
+                           username = "RevolutionAnalytics",
+                           ref = "v0.3.2")
+```
+
+A second possible disadvantage is the reliance on Microsoft's snapshot system. Once these snapshots are down, the whole system is futile. I reckon/hope there will be third party mirrors though once the system gets really popular. 
+
 ## Deployment to GitHub pages
 
 The knitted RMarkdown may be deployed to a respective GitHub page. If your repository `repo` is public, it can then be accessed via `https://user.github.io/repo` (example: https://grssnbchr.github.io/rddj-template). In order to do that,
