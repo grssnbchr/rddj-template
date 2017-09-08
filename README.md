@@ -64,7 +64,7 @@ devtools::install_github("checkpoint",
                            ref = "v0.3.2")
 ```
 
-A second possible disadvantage is the reliance on Microsoft's snapshot system. Once these snapshots are down, the whole system is futile. I reckon/hope there will be third party mirrors though once the system gets really popular. 
+A second possible disadvantage is the reliance on Microsoft's snapshot system. Once these snapshots are down, the whole system is futile. I reckon/hope there will be third party mirrors though once the system gets really popular. Update September 2017: Apparently you can roll your [own checkpoint server](https://github.com/RevolutionAnalytics/checkpoint-server). 
 
 ## Deployment to GitHub pages
 
