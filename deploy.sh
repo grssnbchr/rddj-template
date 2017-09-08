@@ -1,9 +1,21 @@
 #!/bin/bash
+# knit
+# add >>>export PATH="$PATH:/usr/lib/rstudio/bin/pandoc"<<< to your PATH in order for the following to work
+Rscript -e 'library(rmarkdown); rmarkdown::render("analysis/main.Rmd", "html_document")' --vanilla || { echo "ERROR: knitting failed. Please try to knit main.Rmd in RStudio in order to debug."; exit 1; }
 # make temporary copy of preprocessing folder with all data we need in build
 cp -r analysis tmp
 mv deploy.sh tmp/
 # switch to gh-pages branch
 git checkout gh-pages
+if [ $? -eq 0 ]
+then
+  echo "changed to gh-pages"
+else
+  # revert
+  mv tmp/deploy.sh deploy.sh
+  rm -rf tmp/
+  exit 1
+fi
 # copy over index file (the processed main.Rmd) from master branch
 cp tmp/main.html index.html
 # clean

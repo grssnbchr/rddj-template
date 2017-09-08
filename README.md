@@ -70,7 +70,7 @@ A second possible disadvantage is the reliance on Microsoft's snapshot system. O
 
 The knitted RMarkdown may be deployed to a respective GitHub page. If your repository `repo` is public, it can then be accessed via `https://user.github.io/repo` (example: https://grssnbchr.github.io/rddj-template). In order to do that,
 
-1. Knit your RMarkdown at least once (so there is a `main.html` in your analysis folder).
+1. Make sure there **are no unstaged changes** in your working directory. Either `git commit` them or `git stash` them before continuing. 
 
 2. Make sure you're in the root folder of your project (the one above `analysis`)
 
@@ -82,10 +82,12 @@ git checkout master
 ./deploy.sh
 ```
 
-4. For further deployments, it sufficient to knit `main.Rmd` and re-run `./deploy.sh`. 
+4. For further deployments, it is sufficient to re-run `./deploy.sh`. Make sure your working directory is clean before that step. If that is not the case, deployment will not work.
 
 `deploy.sh` does the following: 
 
+* Knit `main.Rmd` into `main.html` using `pandoc`. If that does not work, modify your `PATH` variable like so:
+`export PATH="$PATH:/usr/lib/rstudio/bin/pandoc"` (tested on Linux). If automatic knitting does not work, just knit it manually and comment the first line in `deploy.sh` (the one with `RScript...`).
 * Turn `main.html` into `index.html` so it can be rendered by GitHub pages.
 * Bundle `main.Rmd`, `input`, `output` and `scripts` into a zipped folder `rscript.zip` so the repo can be easily downloaded by people who don't understand Git.
 * Push everything to your remote `gh-pages` branch (will be created if not existing). 

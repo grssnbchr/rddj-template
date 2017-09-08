@@ -188,8 +188,8 @@ write.csv2(x, "output/xyz.csv", row.names = F)
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 set.seed(123)
-x <- rnorm(100)
-y <- x * 2 + rnorm(100)
+x <- rnorm(1000)
+y <- x * 2 + rnorm(1000)
 df <- data.frame(x, y)
 ggplot(df) +
   geom_point(aes(x = x, y = y)) +
