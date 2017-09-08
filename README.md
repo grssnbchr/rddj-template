@@ -16,14 +16,12 @@
 
 ## Setup
 
-First, clone and *reset* git repository. Also create `ignore` folders.
+First, clone and *reset* git repository.
 
 ```
 git clone https://github.com/grssnbchr/rddj-template.git
 cd rddj-template
 rm -rf .git
-mkdir analysis/input/ignore
-mkdir analysis/output/ignore
 git init
 ```
 
