@@ -103,11 +103,11 @@ Code is automatically *linted* with `lintr`, i.e. checked for good style and syn
 
 `input` and `output` files are not ignored by default. This has the advantage that output can be monitored for change when (subtle) details of the R code are changed. 
 
-If you want to ignore (big) input or output files, put them into the respective `ignore` folders. Git only allows a maximum file size of 100MB (or is it 50?).
+If you want to ignore (big) input or output files, put them into the respective `ignore` folders. GitHub only allows a maximum file size of 100MB as of summer 2017.
 
 ### Ability to outsource code to script files
 
-If you want to keep your `main.Rmd` as tidy and brief as possible, you have the possibility to put into 
+If you want to keep your `main.Rmd` as tidy and brief as possible, you have the possibility to put separate functions and other code into script files that reside in the `scripts` folder. An example of this is provided in `main.Rmd`.
 
 ### Optimal RStudio settings
 
