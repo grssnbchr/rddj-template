@@ -81,14 +81,12 @@ detach_all_packages <- function() {
 
 detach_all_packages()
 
-# nolint start
 # this allows multiple persons to use the same RMarkdown
 # without adjusting the working directory by themselves all the time
-# set your working directory here
 source("scripts/csf.R")
-path_to_wd <- csf()
-# nolint end
-if ( is.null(path_to_wd) ) {
+path_to_wd <- csf() # if this - for some reason - does not work, 
+# replace with a hardcoded path, like so: "~/projects/rddj-template/analysis/"
+if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
   print("WARNING: No working directory specified for current user")
 } else {
   setwd(path_to_wd)
