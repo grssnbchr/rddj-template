@@ -10,7 +10,7 @@
 * Automatic deployment of knitted RMarkdown files (and zipped source code) to **GitHub pages**, see [this example](https://grssnbchr.github.io/rddj-template)
 * Code **linting** according to the `tidyverse` style guide
 * Preconfigured `.gitignore` which ignores shadow files, access tokens and the like per default
-* Automatic working directory configuration for multiple users
+* Working directory is set "automagically" (thanks to [@fin](https://github.com/fin))
 
 *For more information please see the [accompanying blog post](https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/)*.
 
@@ -35,7 +35,7 @@ git add remote origin https://github.com/user/repo.git
 
 0. The main document `main.Rmd` lies in `analysis`.
 
-1. Set config variables in the very first chunk and adapt your working directory (`path_to_wd`) in the second R chunk.
+1. Set config variables in the very first chunk.
 
 2. **RMarkdown**: To install the necessary packages for the given `package_date` and try-and-test the whole RMarkdown, knit it in **RStudio** (on Linux/Windows: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>, on Mac: <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>).
 

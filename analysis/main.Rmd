@@ -81,17 +81,12 @@ detach_all_packages <- function() {
 
 detach_all_packages()
 
-# nolint start
 # this allows multiple persons to use the same RMarkdown
 # without adjusting the working directory by themselves all the time
-# set your working directory here
-path_to_wd <- switch(EXPR = system2("whoami", stdout = TRUE),
-                     "person1" = "~/my-company/my-projects/rddj-template/analysis/",
-                     "person2" = "~/projects/rddj-template/analysis/",
-                     "tgrossen" = "~/Projekte/rddj-template/analysis/",
-                     "~")
-# nolint end
-if ( is.null(path_to_wd) ) {
+source("scripts/csf.R")
+path_to_wd <- csf() # if this - for some reason - does not work, 
+# replace with a hardcoded path, like so: "~/projects/rddj-template/analysis/"
+if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
   print("WARNING: No working directory specified for current user")
 } else {
   setwd(path_to_wd)
@@ -207,4 +202,3 @@ lintr::lint("main.Rmd")
 # if you have additional scripts and want them to be linted too, add them here
 lintr::lint("scripts/my_script.R")
 ```
-
