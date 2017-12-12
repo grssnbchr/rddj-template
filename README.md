@@ -28,7 +28,7 @@ git init
 If you have a remote repository, you can add it like so: 
 
 ```
-git add remote origin https://github.com/user/repo.git
+git remote add origin https://github.com/user/repo.git
 ```
 
 ## Initial run
