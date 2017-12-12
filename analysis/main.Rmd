@@ -6,7 +6,9 @@ date: "June 2017"
 output:
   html_document:
     code_folding: show
+    df_print: kable
     toc: yes
+    toc_depth: 4
     toc_float: 
       collapsed: false
       smooth_scroll: false
