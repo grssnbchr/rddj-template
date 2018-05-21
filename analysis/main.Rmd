@@ -93,6 +93,9 @@ if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
 } else {
   setwd(path_to_wd)
 }
+
+# suppress scientific notation
+options(scipen = 999) 
 ```
 
 
