@@ -2,7 +2,7 @@
 title: "rddj-template"
 subtitle: "My analysis"
 author: "My Name"
-date: "June 2017"
+date: "July 2018"
 output:
   html_document:
     code_folding: show
@@ -20,13 +20,18 @@ output:
 user_name <- "grssnbchr" # your Git username (only needed if
 # you want to deploy to GH pages)
 project_name <- "rddj-template" # adapt!
-package_date <- "2017-09-01" # date of the CRAN snapshot that
+package_date <- "2018-07-01" # date of the CRAN snapshot that
 # the checkpoint package uses
+R_version <- "3.4.4" # R-Version to use
+options(Ncpus = 4) # use 4 cores for parallelized installation of packages
+if(R_version != paste0(version$major, ".", version$minor)){
+  stop("ERROR: specified R version does not match currently used.")
+}
 ```
 
 ## Notes
 
-This report was generated on `r Sys.time()`.
+This report was generated on `r Sys.time()`. R version: `r paste0(version$major, ".", version$minor)` on `r version$platform`. For this report, CRAN packages as of `r package_date` were used.
 
 ...
 
@@ -106,18 +111,18 @@ options(scipen = 999)
 # if you don't need a package, remove it from here (commenting is probably not sufficient)
 # tidyverse: see https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
 cat("
-library(tidyverse) # ggplot2, dplyr, tidyr, readr, purrr, tibble
+library(rstudioapi)
+library(tidyverse) # ggplot2 etc.
 library(magrittr) # pipes
-library(stringr) # string manipulation
 library(readxl) # excel
 library(scales) # scales for ggplot2
 library(jsonlite) # json
-library(forcats) # easier factor handling,
 library(lintr) # code linting
 library(sp) # spatial data handling
 library(rgeos) # spatial data handling
 library(rgdal) # spatial data handling
-library(googlesheets) # googlesheets (replace with googlesheets4 asap)",
+library(googlesheets) # googlesheets (replace with googlesheets4 asap)
+library(rmarkdown)",
 file = "manifest.R")
 ```
 
@@ -149,7 +154,8 @@ checkpoint(snapshotDate = package_date,
            project = path_to_wd,
            verbose = T,
            scanForPackages = T,
-           use.knitr = F)
+           use.knitr = F,
+           R.version = R_version)
 rm(package_date)
 ```
 
@@ -205,5 +211,5 @@ The code in this RMarkdown is listed with the [lintr package](https://github.com
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 lintr::lint("main.Rmd")
 # if you have additional scripts and want them to be linted too, add them here
-lintr::lint("scripts/my_script.R")
+# lintr::lint("scripts/my_script.R")
 ```
