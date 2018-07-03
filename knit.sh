@@ -43,4 +43,4 @@ Rscript -e 'library(rmarkdown); rmarkdown::render("analysis/main.Rmd", "html_doc
 
 # open browser
 # TODO should probably be adapted for Mac OS
-xdg-open analysis/main.html
+# xdg-open analysis/main.html
