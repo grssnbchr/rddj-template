@@ -44,11 +44,11 @@ git remote add origin https://github.com/user/repo.git
 
 **WARNING**: It is recommended to restart R (`Session > Restart R`) when starting from scratch, i.e. use `Session > Restart R and Run All Chunks` instead of `Run All Chunks`. If you don't do that, `checkpoint` will be re-installed in your local `.checkpoint` folder, or other errors might occur. 
 
-3. **Knitting the RMarkdown**: Because of how RStudio and `checkpoint` works, the use of the "knit" functionality in RStudio is *strongly discouraged*. It might work, but the preferred way is using the `knit.sh` shell script, like so: `./knit.sh`. This will make sure the `rmarkdown` package from the specified package date will be used, not the globally installed one. `knit.sh` knits the script into a html document `analysis/main.html`. *Knitting to PDF is currently not supported*.
+3. **Knitting the RMarkdown**: Because of how RStudio and `checkpoint` works, the use of the "knit" functionality in RStudio is *strongly discouraged*. It might work, but the preferred way is using the `knit.sh` shell script, execute it in a terminal like so: `./knit.sh`. This will make sure the `rmarkdown` package from the specified package date will be used, not the globally installed one. `knit.sh` knits the script into a html document `analysis/main.html`. If you get an error saying that Pandoc could not be found, you need to let your terminal know where the `pandoc` binary resides by adjusting the `PATH` variable. This holds true for both Linux and Mac OS. Pandoc comes with RStudio, and the binary usually resides in `/usr/lib/rstudio/bin` and `/Applications/RStudio.app/Contents/MacOS/pandoc` respectively. So add the respective directory to your path. Workaround without setting the `PATH` variable: Executing `knit.sh` in the built in RStudio terminal (*not* the R console!) always works because RStudio obviously knows the location of the Pandoc binary. *Knitting to PDF is currently not supported*.
 
 ## OS support
 
-Currently, only Linux is tried and tested, however, this workflow should also work on Mac OS X (will be tested soon). Windows is currently not supported. 
+Currently, only Linux and Mac OS X ("Sierra") are tried and tested. Windows is currently not supported. 
 
 ## More about `checkpoint`
 
