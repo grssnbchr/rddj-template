@@ -13,8 +13,7 @@ case "${unameOut}" in
 esac
 
 # terminate if neither Linux nor Mac
-# TODO: -a "$machine" != "Mac" 
-if [ "$machine" != "Linux" ]; then
+if [ "$machine" != "Linux" -a "$machine" != "Mac" ]; then
   echo "ERROR: Your OS is not supported, terminating."
   exit 1
 fi
