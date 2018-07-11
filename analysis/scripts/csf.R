@@ -3,6 +3,14 @@
 # https://stackoverflow.com/a/36777602
 # returns getwd() if no path
 csf <- function() {
+  if (!require(knitr)) {
+    install.packages("knitr")
+    require(knitr)
+  }
+  if (!require("rstudioapi")){
+    install.packages("rstudioapi")
+    require(rstudioapi)
+  }
   # http://stackoverflow.com/a/32016824/2292993
   cmdArgs = commandArgs(trailingOnly = FALSE)
   needle = "--file="
