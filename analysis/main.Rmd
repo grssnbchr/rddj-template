@@ -2,7 +2,7 @@
 title: "rddj-template"
 subtitle: "My analysis"
 author: "My Name"
-date: "July 2018"
+date: "October 2018"
 output:
   html_document:
     code_folding: show
@@ -20,9 +20,9 @@ output:
 user_name <- "grssnbchr" # your Git username (only needed if
 # you want to deploy to GH pages)
 project_name <- "rddj-template" # adapt!
-package_date <- "2018-07-01" # date of the CRAN snapshot that
+package_date <- "2018-09-01" # date of the CRAN snapshot that
 # the checkpoint package uses
-R_version <- "3.4.4" # R-Version to use
+R_version <- "3.5.1" # R-Version to use
 options(Ncpus = 4) # use 4 cores for parallelized installation of packages
 if(R_version != paste0(version$major, ".", version$minor)){
   stop("ERROR: specified R version does not match currently used.")
@@ -112,16 +112,13 @@ options(scipen = 999)
 # tidyverse: see https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
 cat("
 library(rstudioapi)
-library(tidyverse) # ggplot2 etc.
+library(tidyverse) # ggplot2, dplyr, tidyr, readr, purrr, tibble
 library(magrittr) # pipes
 library(readxl) # excel
 library(scales) # scales for ggplot2
 library(jsonlite) # json
 library(lintr) # code linting
-library(sp) # spatial data handling
-library(rgeos) # spatial data handling
-library(rgdal) # spatial data handling
-library(googlesheets) # googlesheets (replace with googlesheets4 asap)
+library(sf) # spatial data handling
 library(rmarkdown)",
 file = "manifest.R")
 ```
@@ -136,8 +133,7 @@ if (!require(checkpoint)) {
     install.packages("devtools", repos = "http://cran.us.r-project.org")
     require(devtools)
   }
-  devtools::install_github("checkpoint",
-                           username = "RevolutionAnalytics",
+  devtools::install_github("RevolutionAnalytics/checkpoint",
                            ref = "v0.3.2", # could be adapted later,
                            # as of now (beginning of July 2017
                            # this is the current release on CRAN)
