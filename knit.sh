@@ -36,11 +36,9 @@ r_lib_path="~/.checkpoint/$package_date/lib/$platform/$r_version/"
 r_lib_path=${r_lib_path//\"/}
 
 echo "setting $r_lib_path as R_LIBS"
-# adjust PATH so the same Rscript version as the currently active R version is used
-
 # set correct checkpoint folder, so main.Rmd is knitted with historical rmarkdown package
 export R_LIBS_USER=${r_lib_path}
-Rscript -e 'library(rmarkdown); rmarkdown::render("analysis/main.Rmd", "html_document")' --no-site-file --no-init-file --no-restore --no-save || { echo "ERROR: knitting failed."; exit 1; }
+R -e 'library(rmarkdown); rmarkdown::render("analysis/main.Rmd", "html_document")' --no-site-file --no-init-file --no-restore --no-save || { echo "ERROR: knitting failed."; exit 1; }
 
 # open browser
 # TODO should probably be adapted for Mac OS
