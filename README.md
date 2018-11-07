@@ -48,7 +48,16 @@ git remote add origin https://github.com/user/repo.git
 
 ## OS support
 
-Currently, only Linux and Mac OS X ("Sierra") are tried and tested. Windows is currently not supported. 
+☑️: Full functionality (including knitting RMarkdown with `knit.sh`)
+
+(☑️): Limited functionality (without `knit.sh`)
+
+|                  | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
+|------------------|--------------|--------------|-------------------|--------------|------------|
+| master (R-3.5.x) |              | ☑️            | ☑️                 |              | (☑️)        |
+| R-3.4.x          | ☑️            | ☑️            | ☑️                 |              |            |
+| R-3.3.x          |              |              |                   |              |            |
+
 
 ## More about `checkpoint`
 
