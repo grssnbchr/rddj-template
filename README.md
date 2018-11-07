@@ -52,11 +52,11 @@ git remote add origin https://github.com/user/repo.git
 
 (☑️): Limited functionality (without `knit.sh`)
 
-|                  | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
+| branch           | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
 |------------------|--------------|--------------|-------------------|--------------|------------|
 | master (R-3.5.x) |              | ☑️            | ☑️                 |              | (☑️)        |
 | R-3.4.x          | ☑️            | ☑️            | ☑️                 |              |            |
-| R-3.3.x          |              | ☑️<sup>1</sup>|                   |              |            |
+| R-3.3.x          |              | (☑️)<sup>1</sup>|                   |              |            |
 
 * <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9. Also, the installation of `rgdal` fails (so far).
 
