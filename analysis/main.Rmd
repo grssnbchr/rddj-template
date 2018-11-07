@@ -120,7 +120,9 @@ library(readxl) # excel
 library(scales) # scales for ggplot2
 library(jsonlite) # json
 library(lintr) # code linting
-library(sf) # spatial data handling
+library(sp) # spatial data handling
+library(rgdal)
+library(rgeos)
 library(rmarkdown)",
 file = "manifest.R")
 ```
