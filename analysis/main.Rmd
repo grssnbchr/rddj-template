@@ -101,6 +101,8 @@ if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
 
 # suppress scientific notation
 options(scipen = 999) 
+# unload rstudioapi and knitr again to avoid conflicts with checkpoint
+detach_all_packages()
 ```
 
 
