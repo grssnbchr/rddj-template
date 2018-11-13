@@ -56,7 +56,7 @@ git remote add origin https://github.com/user/repo.git
 |------------------|--------------|--------------|-------------------|--------------|------------|
 | master (R-3.5.x) |              | ☑️            | ☑️                 |              | (☑️)        |
 | R-3.4.x          | ☑️            | ☑️            | ☑️                 |              |            |
-| R-3.3.x          |              | (☑️)<sup>1</sup>|                   |              |            |
+| R-3.3.x          |              | (☑️)<sup>1</sup>| ☑️                   |              |            |
 
 * <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9. Also, the installation of `rgdal` fails (so far).
 
