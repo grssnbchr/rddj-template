@@ -166,4 +166,9 @@ Compiled with information from [here](http://r.789695.n4.nabble.com/Installing-d
 * Download the patched versions of the branch you want to install (earliest available branch is 3.3.) under [this section](http://r.research.att.com/#nightly).
 * Extract the downloaded `*.tar.gz` file and move the folder `Library/Frameworks/R.framework/Versions/x.y` to `/Library/Frameworks/R.framework/Versions/`.
 * Launch "RSwitch GUI" and switch between R versions (change is effective immediately, no need to restart RStudio, only R).
+
+### Windows 10
+
+* Install all desired R binaries directly from [r-project.org](https://cloud.r-project.org/bin/windows/base/old/).
+* RStudio (tested with 1.1.463) has a very convenient switch for R versions that can be found under *Tools > Global Options > General > R version*. After switching, restart RStudio. 
   
