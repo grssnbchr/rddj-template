@@ -101,8 +101,14 @@ if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
 
 # suppress scientific notation
 options(scipen = 999) 
-# unload rstudioapi and knitr again to avoid conflicts with checkpoint
-detach_all_packages()
+
+# unload global rstudioapi and knitr again to avoid conflicts with checkpoint
+# this is only necessary if executed within RStudio
+# outside of RStudio, namely in the knit.sh script, this causes RMarkdown
+# rendering to fail, thus should not be executed there
+if (Sys.getenv("RSTUDIO") == "1"){
+  detach_all_packages()
+}
 ```
 
 
