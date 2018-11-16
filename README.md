@@ -48,17 +48,20 @@ git remote add origin https://github.com/user/repo.git
 
 ## OS support
 
+Last tested November 2018. 
+
 ☑️: Full functionality (including knitting RMarkdown with `knit.sh`)
 
 (☑️): Limited functionality (without `knit.sh`)
 
-|                  | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
+| branch           | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
 |------------------|--------------|--------------|-------------------|--------------|------------|
 | master (R-3.5.x) |              | ☑️            | ☑️                 |              | (☑️)        |
-| R-3.4.x          | ☑️            | ☑️            | ☑️                 |              |            |
-| R-3.3.x          |              | ☑️<sup>1</sup>|                   |              |            |
+| R-3.4.x          | ☑️            | ☑️            | ☑️                 |              | (☑️)            |
+| R-3.3.x          |              | ☑️<sup>1</sup>| ☑️                   |              |(☑️)<sup>2</sup>           |
 
-* <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9.
+* <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9. Also, the compilation of `rgdal` [fails with GDAL 2.2.x](https://github.com/grssnbchr/rddj-template/issues/10).
+* <sup>2</sup>: On my setup, `devtools` could not be installed in one go. First I had to install [RTools](https://cran.r-project.org/bin/windows/Rtools/). Then I had to manually `install.packages("debugme"); install.packages("pkgload"); install.packages("pkgbuild"); install.packages("devtools")`, and then it would finally install `checkpoint` and work smoothly from there. If you encounter any errors while installing `devtools`, have a close look at them and try to figure out what dependencies are missing, then install them manually. 
 
 ## More about `checkpoint`
 
@@ -133,3 +136,42 @@ By default, more than one core is used for package installation, which significa
 ### Optimal RStudio settings
 
 It is recommended to disable workspace saving in RStudio, see  https://mran.microsoft.com/documents/rro/reproducibility/doc-research/ 
+
+
+## Installation of older R versions
+
+The idea of this template is that you specify your currently used R version, and that people trying to reproduce your scripts will use that very same R version (or at least up to the two first version numbers, e.g. 3.4.x). This makes it necessary to install old R versions. Here's some advice on how to do that on a couple of OSes. 
+
+### Debian (tested on Ubuntu 16.04 and higher)
+
+Compiled with information from [here](http://r.789695.n4.nabble.com/Installing-different-versions-of-R-simultaneously-on-Linux-td879536.html), [here](https://cloud.r-project.org/doc/FAQ/R-FAQ.html#How-can-R-be-installed-_0028Unix_002dlike_0029) and [here](http://spartanideas.msu.edu/2015/06/19/alternative-versions-of-r/).
+
+* Download the required archive from [here](https://cloud.r-project.org/src/base/)
+* Untar and move it to the `/opt/src` directory with `sudo tar -xvf R-x.y.z.tar.gz -C /opt/src`, this will create a new directory
+* Change into that new directory and run `sudo ./configure --enable-R-shlib --with-cairo=yes --prefix=/opt/R/R-x.y.z` (**change placeholders!**)
+* Install some graphics dependencies `sudo apt-get install libcairo2-dev libgtk2.0-dev libtiff5-dev libx11-dev` if not already done.
+* Compile it with `sudo make`
+* Optionally run `sudo make check`
+* Install it with `sudo make install`
+* There should be an executable binary in `/opt/R/R-x.y.z/bin` now.
+* In order to let your system know of that new R version and to be able to switch between alternatives, do this:
+  * Run `update-alternatives --list R` to see whether R is already registered with alternative versions
+  * If not, make a default alternative `sudo rm -rf /usr/bin/R && sudo update-alternatives --install /usr/bin/R R /usr/lib/R/bin/R 1000` (this is probably the newest R version from the Debian package management system)
+  * Add the newly installed R version as alternative `sudo update-alternatives --install /usr/bin/R R /opt/R/R-x.y.z/bin/R 100`
+  * Check with `update-alternatives --display R`.
+  * From now on, you can easily switch between R versions doing `sudo update-alternatives --config R`. Do this before you start RStudio (RStudio always uses the symlink in `/usr/bin/R`).
+  * If the `update-alternatives` switch does not work for some reason, manually set a link with `sudo ln -sf /opt/R/R-x.y.z/bin/R /usr/bin/R` to switch to version `x.y.z`.
+  
+### macOS X (tested on High Sierra and higher)
+
+* First of all, you need to have at least one R version installed (probably the latest one).
+* Navigate to r.research.att.com and download/install the so-called [RSwitch GUI](http://r.research.att.com/RSwitch-1.2.dmg).
+* Download the patched versions of the branch you want to install (earliest available branch is 3.3.) under [this section](http://r.research.att.com/#nightly).
+* Extract the downloaded `*.tar.gz` file and move the folder `Library/Frameworks/R.framework/Versions/x.y` to `/Library/Frameworks/R.framework/Versions/`.
+* Launch "RSwitch GUI" and switch between R versions (change is effective immediately, no need to restart RStudio, only R).
+
+### Windows 10
+
+* Install all desired R binaries directly from [r-project.org](https://cloud.r-project.org/bin/windows/base/old/).
+* RStudio (tested with 1.1.463) has a very convenient switch for R versions that can be found under *Tools > Global Options > General > R version*. After switching, restart RStudio. 
+  
