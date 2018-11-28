@@ -24,7 +24,7 @@ package_date <- "2017-01-01" # date of the CRAN snapshot that
 # the checkpoint package uses
 R_version <- "3.3.3" # R-Version to use
 options(Ncpus = 4) # use 4 cores for parallelized installation of packages
-if(R_version != paste0(version$major, ".", version$minor)){
+if (R_version != paste0(version$major, ".", version$minor)){
   stop("ERROR: specified R version does not match currently used.")
 }
 ```
@@ -91,7 +91,7 @@ detach_all_packages()
 # this allows multiple persons to use the same RMarkdown
 # without adjusting the working directory by themselves all the time
 source("scripts/csf.R")
-path_to_wd <- csf() # if this - for some reason - does not work, 
+path_to_wd <- csf() # if this - for some reason - does not work,
 # replace with a hardcoded path, like so: "~/projects/rddj-template/analysis/"
 if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
   print("WARNING: No working directory specified for current user")
@@ -100,7 +100,7 @@ if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
 }
 
 # suppress scientific notation
-options(scipen = 999) 
+options(scipen = 999)
 
 # unload global rstudioapi and knitr again to avoid conflicts with checkpoint
 # this is only necessary if executed within RStudio
@@ -205,8 +205,10 @@ y <- x * 2 + rnorm(1000)
 df <- data.frame(x, y)
 ggplot(df) +
   geom_point(aes(x = x, y = y)) +
-  geom_smooth(aes(x = x, y = y)) + 
-  labs(title = "The correlation between x and y", subtitle = "A ggplot2 approach", caption = "source: a pseudo-number generator with seed 123") +
+  geom_smooth(aes(x = x, y = y)) +
+  labs(title = "The correlation between x and y", 
+       subtitle = "A ggplot2 approach", 
+       caption = "source: a pseudo-number generator with seed 123") +
   theme_minimal()
 ``` 
 

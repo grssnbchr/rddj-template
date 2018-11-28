@@ -46,6 +46,16 @@ git remote add origin https://github.com/user/repo.git
 
 3. **Knitting the RMarkdown**: Because of how RStudio and `checkpoint` works, the use of the "knit" functionality in RStudio is *strongly discouraged*. It might work, but the preferred way is using the `knit.sh` shell script, execute it in a terminal like so: `./knit.sh`. This will make sure the `rmarkdown` package from the specified package date will be used, not the globally installed one. `knit.sh` knits the script into a html document `analysis/main.html`. If you get an error saying that Pandoc could not be found, you need to let your terminal know where the `pandoc` binary resides by adjusting the `PATH` variable. This holds true for both Linux and Mac OS. Pandoc comes with RStudio, and the binary usually resides in `/usr/lib/rstudio/bin` and `/Applications/RStudio.app/Contents/MacOS/pandoc` respectively. So add the respective directory to your path. Workaround without setting the `PATH` variable: Executing `knit.sh` in the built in RStudio terminal (*not* the R console!) always works because RStudio obviously knows the location of the Pandoc binary. *Knitting to PDF is currently not supported*.
 
+## Branches
+
+There are three branches at the moment:
+
+* master: Uses R 3.5.x and packages as of 2018-09-01
+* r-3.4: Uses R 3.4.4 and packages as of 2018-04-01
+* r-3.3: Uses R 3.3.3 and packages as of 2017-01-01
+
+Use whichever you want. 
+
 ## OS support
 
 Last tested November 2018. 
@@ -56,12 +66,13 @@ Last tested November 2018.
 
 | branch           | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
 |------------------|--------------|--------------|-------------------|--------------|------------|
-| master (R-3.5.x) |              | ☑️            | ☑️                 |              | (☑️)        |
-| R-3.4.x          | ☑️            | ☑️            | ☑️                 |              | (☑️)            |
-| R-3.3.x          |              | ☑️<sup>1</sup>| ☑️                   |              |(☑️)<sup>2</sup>           |
+| master (R-3.5.x) |              | ☑️            | ☑️                 | ☑️             | (☑️)        |
+| R-3.4.x          | ☑️            | ☑️            | ☑️                 | ☑️            | (☑️)            |
+| R-3.3.x          |              | ☑️<sup>1</sup>| ☑️                   |☑️<sup>3</sup>              |(☑️)<sup>2</sup>           |
 
 * <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9. Also, the compilation of `rgdal` [fails with GDAL 2.2.x](https://github.com/grssnbchr/rddj-template/issues/10).
 * <sup>2</sup>: On my setup, `devtools` could not be installed in one go. First I had to install [RTools](https://cran.r-project.org/bin/windows/Rtools/). Then I had to manually `install.packages("debugme"); install.packages("pkgload"); install.packages("pkgbuild"); install.packages("devtools")`, and then it would finally install `checkpoint` and work smoothly from there. If you encounter any errors while installing `devtools`, have a close look at them and try to figure out what dependencies are missing, then install them manually. 
+* <sup>3</sup>There were errors similar to <sup>2</sup>. When prompted to choose between binary and source packages, I always typed in "y" and hit Enter. This way it worked for me.
 
 ## More about `checkpoint`
 
