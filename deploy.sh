@@ -28,6 +28,9 @@ cp -r tmp/output rscript/
 # copy over other necessary input files from master branch
 cp -r tmp/input rscript/
 cp -r tmp/scripts rscript/
+# remove ignore folder from folder that gets zipped
+rm -rf rscript/output/ignore
+rm -rf rscript/input/ignore
 # zip the rscript folder
 zip -r rscript.zip rscript
 # remove the rscript folder
