@@ -214,7 +214,7 @@ ggplot(df) +
 
 ## Linting
 
-The code in this RMarkdown is listed with the [lintr package](https://github.com/jimhester/lintr), which is based on the  [tidyverse style guide](http://style.tidyverse.org/). 
+The code in this RMarkdown is linted with the [lintr package](https://github.com/jimhester/lintr), which is based on the  [tidyverse style guide](http://style.tidyverse.org/). 
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 lintr::lint("main.Rmd")
