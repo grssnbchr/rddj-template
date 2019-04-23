@@ -217,7 +217,12 @@ ggplot(df) +
 The code in this RMarkdown is linted with the [lintr package](https://github.com/jimhester/lintr), which is based on the  [tidyverse style guide](http://style.tidyverse.org/). 
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-lintr::lint("main.Rmd")
+lintr::lint("main.Rmd", linters =
+              lintr::with_defaults(
+                commented_code_linter = NULL,
+                trailing_whitespace_linter = NULL
+                )
+            )
 # if you have additional scripts and want them to be linted too, add them here
 # lintr::lint("scripts/my_script.R")
 ```
