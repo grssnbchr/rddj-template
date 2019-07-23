@@ -22,7 +22,7 @@ user_name <- "grssnbchr" # your Git username (only needed if
 project_name <- "rddj-template" # adapt!
 package_date <- "2018-09-01" # date of the CRAN snapshot that
 # the checkpoint package uses
-R_version <- "3.5.2" # R-Version to use
+R_version <- "3.5.3" # R-Version to use
 options(Ncpus = 4) # use 4 cores for parallelized installation of packages
 if (R_version != paste0(version$major, ".", version$minor)){
   stop("ERROR: specified R version does not match currently used.")
