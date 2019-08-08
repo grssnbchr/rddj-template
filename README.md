@@ -50,7 +50,7 @@ git remote add origin https://github.com/user/repo.git
 
 There are three branches at the moment:
 
-* master: Uses R 3.5.x and packages as of 2018-09-01
+* master: Uses R 3.5.x and packages as of 2019-03-01
 * r-3.4: Uses R 3.4.4 and packages as of 2018-04-01
 * r-3.3: Uses R 3.3.3 and packages as of 2017-01-01
 
@@ -58,7 +58,7 @@ Use whichever you want.
 
 ## OS support
 
-Last tested November 2018. 
+Last (fully) tested November 2018. 
 
 ☑️: Full functionality (including knitting RMarkdown with `knit.sh`)
 
