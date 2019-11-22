@@ -40,7 +40,7 @@ git remote add origin https://github.com/user/repo.git
   * `R_version`: While specifying a package date is the first step for true reproducibility, you also need to tell people what R version you were using, for the sake of compatibility. For instance, R version 3.5.x probably won't work with packages released before May/June 2018. People who want to reproduce a script that you wrote in 2017, for instance, will have to install R version 3.4.x in order to ensure reproducibility. 
   * `options(Ncpus = x)`: People with multi-core machines can get a performance boost by specifying more than one core here. If you don't know the number of cores on your machine, set `x` to `1`.
 
-2. **Run the script**: The individual R chunks should be run in the interpreter (`Code > Run Region > Run All`) on Linux/Windows: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>R</kbd>, on Mac: <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>R</kbd>). Be advised that some packages, like `rgdal`, need additional third party libraries installed. Watch out for compiler/installation messages in the R console. On a Mac, occasional `y/n:` prompts may show up in the R console during package installation (section "install packages") – just confirm them by pressing `y` and <kbd>Enter</kbd>.  Knitting the RMarkdown should *not* be done with RStudio (see below).
+2. **Run the script**: The individual R chunks should be run in the interpreter (`Code > Run Region > Run All`) on Linux/Windows: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>R</kbd>, on Mac: <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>R</kbd>). Be advised that some packages, like `rgdal`, need additional third party libraries installed. Watch out for compiler/installation messages in the R console. Also, you need to have the `knitr` and `rstudioapi` packages globally installed, e.g. installed via the RStudio package manager. On a Mac, occasional `y/n:` prompts may show up in the R console during package installation (section "install packages") – just confirm them by pressing `y` and <kbd>Enter</kbd>.  Knitting the RMarkdown should *not* be done with RStudio (see below).
 
 **WARNING**: It is recommended to restart R (`Session > Restart R`) when starting from scratch, i.e. use `Session > Restart R and Run All Chunks` instead of `Run All Chunks`. If you don't do that, `checkpoint` will be re-installed in your local `.checkpoint` folder, or other errors might occur. 
 
@@ -50,7 +50,7 @@ git remote add origin https://github.com/user/repo.git
 
 There are three branches at the moment:
 
-* master: Uses R 3.5.x and packages as of 2018-09-01
+* master: Uses R 3.5.x and packages as of 2019-03-01
 * r-3.4: Uses R 3.4.4 and packages as of 2018-04-01
 * r-3.3: Uses R 3.3.3 and packages as of 2017-01-01
 
@@ -58,7 +58,7 @@ Use whichever you want.
 
 ## OS support
 
-Last tested November 2018. 
+Last (fully) tested November 2018. 
 
 ☑️: Full functionality (including knitting RMarkdown with `knit.sh`)
 
@@ -170,7 +170,7 @@ Compiled with information from [here](http://r.789695.n4.nabble.com/Installing-d
   * If not, make a default alternative `sudo rm -rf /usr/bin/R && sudo update-alternatives --install /usr/bin/R R /usr/lib/R/bin/R 1000` (this is probably the newest R version from the Debian package management system)
   * Add the newly installed R version as alternative `sudo update-alternatives --install /usr/bin/R R /opt/R/R-x.y.z/bin/R 100`
   * Check with `update-alternatives --display R`.
-  * From now on, you can easily switch between R versions doing `sudo update-alternatives --config R`. Do this before you start RStudio (RStudio always uses the symlink in `/usr/bin/R`).
+  * From now on, you can easily switch between R versions doing `sudo update-alternatives --config R`. Do this before you start RStudio (RStudio always uses the symlink in `/usr/bin/R`). If there's a problem with a "broken" group, you can "force" the switch with the `--force` flag right after `update-alternatives`.
   * If the `update-alternatives` switch does not work for some reason, manually set a link with `sudo ln -sf /opt/R/R-x.y.z/bin/R /usr/bin/R` to switch to version `x.y.z`.
   
 ### macOS X (tested on High Sierra and higher)

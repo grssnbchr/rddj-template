@@ -48,5 +48,9 @@ git push origin gh-pages
 git checkout master
 # copy back deploy.sh
 mv tmp/deploy.sh .
+# bugfix: copy back output/ignore
+mv tmp/output/ignore/* analysis/output/ignore
+# bugfix: copy back input/ignore
+mv tmp/input/ignore/* analysis/input/ignore
 # remove temporary folder
 rm -rf tmp
