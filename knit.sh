@@ -20,7 +20,7 @@ fi
 
 # find out checkpoint package date from main.Rmd
 package_date_raw="$(grep -E "package_date\s<-\s\"[0-9]{4}\-[0-9]{2}\-[0-9]{2}\"" analysis/main.Rmd -o)"
-# version_raw="$(grep -E "R_version\s<-\s\"[0-9]{1}\.[0-9]{1}\.[0-9]{1}\"" analysis/main.Rmd -o)"
+# version_raw="$(grep -E "r_version\s<-\s\"[0-9]{1}\.[0-9]{1}\.[0-9]{1}\"" analysis/main.Rmd -o)"
 # extract substring for date
 package_date=${package_date_raw:16}
 

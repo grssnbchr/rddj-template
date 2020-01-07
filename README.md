@@ -48,9 +48,10 @@ git remote add origin https://github.com/user/repo.git
 
 ## Branches
 
-There are three branches at the moment:
+There are four branches at the moment:
 
-* master: Uses R 3.5.x and packages as of 2019-03-01
+* master: Uses R 3.6.x and packages as of 2020-01-01
+* r-3.5: Uses R 3.5.3 and packages as of 2019-03-01
 * r-3.4: Uses R 3.4.4 and packages as of 2018-04-01
 * r-3.3: Uses R 3.3.3 and packages as of 2017-01-01
 
@@ -58,17 +59,18 @@ Use whichever you want.
 
 ## OS support
 
-Last (fully) tested November 2018. 
 
 ☑️: Full functionality (including knitting RMarkdown with `knit.sh`)
 
 (☑️): Limited functionality (without `knit.sh`)
 
+
 | branch           | Ubuntu 16.04 | Ubuntu 18.04 | macOS High Sierra | macOS Mojave | Windows 10 |
 |------------------|--------------|--------------|-------------------|--------------|------------|
-| master (R-3.5.x) |              | ☑️            | ☑️                 | ☑️             | (☑️)        |
+| master (R-3.6.x) | not tested   | ☑️           | not tested       | not tested    | not tested |
+| R-3.5.x          | not tested   | ☑️            | ☑️                 | ☑️             | (☑️)       |
 | R-3.4.x          | ☑️            | ☑️            | ☑️                 | ☑️            | (☑️)            |
-| R-3.3.x          |              | ☑️<sup>1</sup>| ☑️                   |☑️<sup>3</sup>              |(☑️)<sup>2</sup>           |
+| R-3.3.x          | not tested   | ☑️<sup>1</sup>| ☑️                 |☑️<sup>3</sup>              |(☑️)<sup>2</sup> |
 
 * <sup>1</sup>: It may be necessary to reinstall the `curl` package because of `libcurl`. See https://github.com/grssnbchr/rddj-template/issues/9. Also, the compilation of `rgdal` [fails with GDAL 2.2.x](https://github.com/grssnbchr/rddj-template/issues/10).
 * <sup>2</sup>: On my setup, `devtools` could not be installed in one go. First I had to install [RTools](https://cran.r-project.org/bin/windows/Rtools/). Then I had to manually `install.packages("debugme"); install.packages("pkgload"); install.packages("pkgbuild"); install.packages("devtools")`, and then it would finally install `checkpoint` and work smoothly from there. If you encounter any errors while installing `devtools`, have a close look at them and try to figure out what dependencies are missing, then install them manually. 

@@ -2,7 +2,7 @@
 title: "rddj-template"
 subtitle: "My analysis"
 author: "My Name"
-date: "October 2018"
+date: "January 2020"
 output:
   html_document:
     code_folding: show
@@ -20,11 +20,11 @@ output:
 user_name <- "grssnbchr" # your Git username (only needed if
 # you want to deploy to GH pages)
 project_name <- "rddj-template" # adapt!
-package_date <- "2019-03-01" # date of the CRAN snapshot that
+package_date <- "2020-01-01" # date of the CRAN snapshot that
 # the checkpoint package uses
-R_version <- "3.5.3" # R-Version to use
+r_version <- "3.6.2" # R-Version to use
 options(Ncpus = 4) # use 4 cores for parallelized installation of packages
-if (R_version != paste0(version$major, ".", version$minor)){
+if (r_version != paste0(version$major, ".", version$minor)) {
   stop("ERROR: specified R version does not match currently used.")
 }
 ```
@@ -93,7 +93,7 @@ detach_all_packages()
 source("scripts/csf.R")
 path_to_wd <- csf() # if this - for some reason - does not work,
 # replace with a hardcoded path, like so: "~/projects/rddj-template/analysis/"
-if ( is.null(path_to_wd) | !dir.exists(path_to_wd)) {
+if (is.null(path_to_wd) | !dir.exists(path_to_wd)) {
   print("WARNING: No working directory specified for current user")
 } else {
   setwd(path_to_wd)
@@ -106,7 +106,7 @@ options(scipen = 999)
 # this is only necessary if executed within RStudio
 # outside of RStudio, namely in the knit.sh script, this causes RMarkdown
 # rendering to fail, thus should not be executed there
-if (Sys.getenv("RSTUDIO") == "1"){
+if (Sys.getenv("RSTUDIO") == "1") {
   detach_all_packages()
 }
 ```
@@ -115,8 +115,9 @@ if (Sys.getenv("RSTUDIO") == "1"){
 ### Define packages
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
-# from https://mran.revolutionanalytics.com/web/packages/checkpoint/vignettes/using-checkpoint-with-knitr.html
-# if you don't need a package, remove it from here (commenting is probably not sufficient)
+# from https://mran.revolutionanalytics.com/web/packages/\
+# checkpoint/vignettes/using-checkpoint-with-knitr.html
+# if you don't need a package, remove it from here (commenting not sufficient)
 # tidyverse: see https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
 cat("
 library(rstudioapi)
@@ -159,7 +160,7 @@ checkpoint(snapshotDate = package_date,
            verbose = T,
            scanForPackages = T,
            use.knitr = F,
-           R.version = R_version)
+           R.version = r_version)
 rm(package_date)
 ```
 
