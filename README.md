@@ -50,7 +50,7 @@ git remote add origin https://github.com/user/repo.git
 
 There are four branches at the moment:
 
-* master: Uses R 3.6.x and packages as of 2020-01-01
+* master: Uses R 3.6.x and packages as of 2020-10-07
 * r-3.5: Uses R 3.5.3 and packages as of 2019-03-01
 * r-3.4: Uses R 3.4.4 and packages as of 2018-04-01
 * r-3.3: Uses R 3.3.3 and packages as of 2017-01-01
