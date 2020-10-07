@@ -2,7 +2,7 @@
 title: "rddj-template"
 subtitle: "My analysis"
 author: "My Name"
-date: "January 2020"
+date: "July 2020"
 output:
   html_document:
     code_folding: show
@@ -20,9 +20,9 @@ output:
 user_name <- "grssnbchr" # your Git username (only needed if
 # you want to deploy to GH pages)
 project_name <- "rddj-template" # adapt!
-package_date <- "2020-01-01" # date of the CRAN snapshot that
+package_date <- "2020-07-01" # date of the CRAN snapshot that
 # the checkpoint package uses
-r_version <- "3.6.2" # R-Version to use
+r_version <- "3.6.3" # R-Version to use
 options(Ncpus = 4) # use 4 cores for parallelized installation of packages
 if (r_version != paste0(version$major, ".", version$minor)) {
   stop("ERROR: specified R version does not match currently used.")
