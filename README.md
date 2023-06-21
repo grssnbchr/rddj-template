@@ -1,3 +1,7 @@
+# DEPRECATION NOTICE
+
+This repository is no longer maintained or supported, largely due to the retirement of the [MRAN server](https://techcommunity.microsoft.com/t5/azure-sql-blog/microsoft-r-application-network-retirement/ba-p/3707161), on which the checkpoint package relied. 
+
 # rddj-template
 
 *A template for bootstrapping reproducible RMarkdown documents for data journalistic purposes.*
